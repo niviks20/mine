@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Love ❤️</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff4b91, #ff7eb3, #ffc2d1);
+            background-size: 400% 400%;
+            animation: bgMove 12s infinite alternate;
+        }
+
+        /* Background Animation */
+
+        @keyframes bgMove {
+            0% {
+                background-position: left;
+            }
+
+            100% {
+                background-position: right;
+            }
+        }
+
+        /* Floating Hearts */
+
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hearts::before,
+        .hearts::after {
+            content: "❤";
+            position: absolute;
+            color: #fff;
+            font-size: 25px;
+            animation: heartFloat 8s linear infinite;
+        }
+
+        .hearts::before {
+            left: 20%;
+        }
+
+        .hearts::after {
+            left: 80%;
+            animation-delay: 3s;
+        }
+
+        @keyframes heartFloat {
+
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(2);
+                opacity: 0;
+            }
+
+        }
+
+        /* Pages */
+
+        .page {
+
+            display: none;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+
+        }
+
+        .page.active {
+
+            display: flex;
+
+        }
+
+        /* Glass Card */
+
+        .container {
+
+            background: rgba(255, 255, 255, .18);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+
+        }
+
+        /* Date */
+
+        .small-text {
+
+            color: white;
+            font-size: 28px;
+
+        }
+
+        .birthday-date {
+
+            font-size: 70px;
+            color: white;
+            font-family: 'Great Vibes', cursive;
+            margin-top: 20px;
+
+        }
+
+        .intro {
+
+            color: white;
+            font-size: 20px;
+            line-height: 1.8;
+
+        }
+
+        /* Love Button */
+
+        .btn-love {
+
+            background: white;
+            color: #ff2d75;
+            font-size: 20px;
+            padding: 12px 35px;
+            border-radius: 40px;
+            border: none;
+            font-weight: bold;
+            transition: .4s;
+
+        }
+
+        .btn-love:hover {
+
+            transform: scale(1.08);
+            background: #ff2d75;
+            color: white;
+
+        }
+
+        /* Countdown */
+
+        #countNumber {
+
+            font-size: 170px;
+            color: white;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+
+        }
+
+        @keyframes pulse {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+        /* Gallery */
+
+        .gallery {
+
+            position: relative;
+            margin: auto;
+            margin-top: 40px;
+            width: 350px;
+            height: 450px;
+
+        }
+
+        .memory {
+
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            object-fit: cover;
+            display: none;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .4);
+
+        }
+
+        .activeImg {
+
+            display: block;
+
+        }
+
+        .gallery-title {
+
+            color: white;
+            font-family: 'Great Vibes', cursive;
+            font-size: 60px;
+
+        }
+
+        /* Love Letter */
+
+        .love-title {
+
+            color: white;
+            font-family: 'Great Vibes', cursive;
+            font-size: 60px;
+
+        }
+
+        .love-box {
+
+            margin-top: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            line-height: 2;
+            font-size: 19px;
+            height: 420px;
+            overflow: auto;
+
+        }
+
+        /* Birthday */
+
+        .happy {
+
+            font-size: 75px;
+            color: white;
+            font-family: 'Great Vibes', cursive;
+
+        }
+
+        .name {
+
+            color: white;
+            font-size: 45px;
+            margin-top: 20px;
+
+        }
+
+        .wish {
+
+            margin-top: 25px;
+            font-size: 22px;
+            color: white;
+            line-height: 2;
+
+        }
+
+        .cake {
+
+            font-size: 120px;
+            animation: bounce 1.5s infinite;
+
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+
+                transform: translateY(0);
+
+            }
+
+            50% {
+
+                transform: translateY(-25px);
+
+            }
+
+        }
+
+        /* Mobile */
+
+        @media(max-width:768px) {
+
+            .container {
+
+                padding: 20px;
+
+            }
+
+            .birthday-date {
+
+                font-size: 50px;
+
+            }
+
+            #countNumber {
+
+                font-size: 110px;
+
+            }
+
+            .gallery {
+
+                width: 280px;
+                height: 360px;
+
+            }
+
+            .happy {
+
+                font-size: 50px;
+
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Hearts -->
+    <div class="hearts"></div>
+
+    <!-- ===================== PAGE 1 ===================== -->
+
+    <section class="page active" id="page1">
+
+        <div class="container text-center">
+
+            <h3 class="small-text">
+                A Special Day❤️
+            </h3>
+
+            <h1 class="birthday-date">
+                18/10/2006
+            </h1>
+
+            <p class="mt-4 intro">
+                Today is not just another day...
+                <br><br>
+
+                It's the day the most wonderful person came into this world.
+
+                <br><br>
+
+                I made something especially for you...
+            </p>
+
+            <button class="btn btn-love mt-5" onclick="nextPage(2)">
+                Open It❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================== PAGE 2 ===================== -->
+
+    <section class="page" id="page2">
+
+        <div class="container text-center">
+
+            <h2 class="mb-5">
+                Are You Ready?❤️
+            </h2>
+
+            <div id="countdown">
+
+                <h1 id="countNumber">
+                    3
+                </h1>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===================== PAGE 3 ===================== -->
+
+    <section class="page" id="page3">
+
+        <div class="container text-center">
+
+            <h2 class="gallery-title">
+                Our Beautiful Memories❤️
+            </h2>
+
+            <div class="gallery">
+
+                <img src="./WhatsApp Image 2026-08-25 at 00.47.25.jpeg" class="memory activeImg">
+
+                <img src="./nivis.jpg" class="memory">
+su
+                <img src="./geenu1.jpg" class="memory">
+
+                <img src="./geenu2.jpg" class="memory">
+
+                <img src="./geenu5.jpg" class="memory">
+
+
+            </div>
+
+            <button class="btn btn-love mt-5" onclick="nextPage(4)">
+                Continue❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ===================== PAGE 4 ===================== -->
+
+    <section class="page" id="page4">
+
+        <div class="container">
+
+            <h1 class="love-title text-center">
+                A Letter For You ❤️
+            </h1>
+
+            <div class="love-box">
+
+                <p id="loveText">
+                    Happy Birthday, My Love❤️
+                    Every moment with you has become one of the most beautiful chapters of my life. Your smile brightens
+                    even my darkest days, and your love gives me strength whenever I need it most. Thank you for being
+                    patient with me, for believing in me, and for making my world feel so warm and safe.
+
+                    You are not just my boyfriend—you are my best friend, my biggest supporter, and my favorite person.
+                    Every memory we have created together is precious, and I can't wait to make thousands more. I feel
+                    incredibly lucky that life brought you into my journey.
+
+                    On your birthday, I don't wish for expensive gifts or grand celebrations. I only wish that your
+                    heart is always filled with happiness, your dreams come true, your health remains strong, and your
+                    smile never fades.
+
+                    No matter what life brings, I promise to stand beside you with love, care, trust, and endless
+                    support. Thank you for loving me exactly as I am.
+
+                    Happy Birthday, my love. You are my today, my tomorrow, and one of the greatest blessings of my
+                    life.
+
+                    I love you endlessly...❤️
+
+                </p>
+
+            </div>
+
+            <div class="text-center">
+
+                <button class="btn btn-love mt-4" onclick="nextPage(5)">
+                    Finally.........❤️
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ===================== PAGE 5 ===================== -->
+
+    <section class="page" id="page5">
+
+        <div class="container text-center">
+
+            <h1 class="happy">
+                🎂Happy Birthday🎂
+            </h1>
+
+            <h2 class="name">
+
+                My World❤️
+
+            </h2>
+
+            <p class="wish">
+
+                May your smile always shine brighter than the stars.
+
+                May every dream become reality.
+
+                May happiness follow you forever.
+
+                Thank you for filling my life with love.
+
+                You are my greatest blessing.
+
+                I Love You Forever❤️
+
+            </p>
+
+            <div class="cake">
+
+                🎂
+
+            </div>
+
+            <button class="btn btn-love mt-4" onclick="celebrate()">
+
+                Click Me❤️
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <script>
+        // Show selected page
+        function nextPage(pageNo) {
+
+            // Hide all pages
+            document.querySelectorAll(".page").forEach(page => {
+                page.classList.remove("active");
+            });
+
+            // Show current page
+            document.getElementById("page" + pageNo).classList.add("active");
+
+            // Start countdown
+            if (pageNo === 2) {
+                startCountdown();
+            }
+
+            // Start image slideshow
+            if (pageNo === 3) {
+                startGallery();
+            }
+        }
+
+        // ---------------- COUNTDOWN ----------------
+
+        function startCountdown() {
+
+            const count = document.getElementById("countNumber");
+
+            let numbers = ["3", "2", "1", "❤️"];
+
+            let i = 0;
+
+            count.innerHTML = numbers[i];
+
+            let timer = setInterval(() => {
+
+                i++;
+
+                if (i < numbers.length) {
+
+                    count.innerHTML = numbers[i];
+
+                } else {
+
+                    clearInterval(timer);
+
+                    // Automatically open gallery page
+                    setTimeout(() => {
+                        nextPage(3);
+                    }, 1000);
+                }
+
+            }, 1000);
+        }
+
+        // ---------------- GALLERY ----------------
+
+        let currentImage = 0;
+
+        function startGallery() {
+
+            const images = document.querySelectorAll(".memory");
+
+            images.forEach(img => img.classList.remove("activeImg"));
+
+            currentImage = 0;
+
+            images[currentImage].classList.add("activeImg");
+
+            let slide = setInterval(() => {
+
+                images[currentImage].classList.remove("activeImg");
+
+                currentImage++;
+
+                if (currentImage >= images.length) {
+
+                    clearInterval(slide);
+
+                    // Show last image for 2 seconds
+                    setTimeout(() => {
+                        document.querySelector(".btn-love").style.display = "inline-block";
+                    }, 2000);
+
+                    return;
+                }
+
+                images[currentImage].classList.add("activeImg");
+
+            }, 2000);
+        }
+
+        // ---------------- FINAL CELEBRATION ----------------
+
+        function celebrate() {
+
+            // Balloons
+            for (let i = 0; i < 40; i++) {
+
+                let balloon = document.createElement("div");
+
+                balloon.innerHTML = "🎈";
+
+                balloon.style.position = "fixed";
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.bottom = "-50px";
+                balloon.style.fontSize = (20 + Math.random() * 40) + "px";
+                balloon.style.animation = "fly 6s linear forwards";
+
+                document.body.appendChild(balloon);
+
+                setTimeout(() => {
+                    balloon.remove();
+                }, 6000);
+            }
+
+            // Hearts
+            for (let i = 0; i < 40; i++) {
+
+                let heart = document.createElement("div");
+
+                heart.innerHTML = "❤️";
+
+                heart.style.position = "fixed";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.top = "100vh";
+                heart.style.fontSize = (20 + Math.random() * 30) + "px";
+                heart.style.animation = "fly 5s linear forwards";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+
+            alert("🎂 Happy Birthday My Love❤️\n\nI Love You Forever💖");
+        }
+
+        // ---------------- ADD ANIMATION ----------------
+
+        const style = document.createElement("style");
+
+        style.innerHTML = `
+
+@keyframes fly{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+
+}
+
+`;
+
+        document.head.appendChild(style);
+    </script>
+
+</body>
+
+</html>
